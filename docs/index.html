@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Alexandra Jimenez">
+<meta name="dcterms.date" content="2025-08-06">
 
 <title>quartoCourseBlog – Alex’s R Porfolio</title>
 <style>
@@ -20,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +67,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -69,73 +104,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -151,7 +128,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/CrumpLab/quartoCourseBlog"> <i class="bi bi-github" role="img">
@@ -171,109 +148,145 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">quartoCourseBlog</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2VuZXJhbA==">general <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z29hbHM=">goals <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">quartoCourseBlog</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data_science, goals</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alexandra Jimenez </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 6, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
-<p>i love music, raccoon’s, and flowers</p>
+</header>
 
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Z29hbHMlMkNnZW5lcmFs" data-listing-date-sort="1666310400000" data-listing-file-modified-sort="1754490583003" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
-<div class="thumbnail"><a href="./posts/my_first_post/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/my_first_post/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/my_first_post/index.html" class="no-external">My First post</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z29hbHM='); return false;">goals</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhbA=='); return false;">general</div>
-
+<p><strong>Welcome to my website showing off my R portfolio</strong></p>
+<p><img src="images/clipboard-3366648065.png" class="img-fluid"></p>
+<section id="benign-and-malignant-cancer-data" class="level1">
+<h1>Benign and Malignant Cancer Data</h1>
+<ul>
+<li><p><strong>Introduction</strong></p>
+<ul>
+<li><p>Cancer is one of the leading causes of death globally. I’m interested in exploring how different variables—such as age, tumor size, or metastasis presence—relate to whether a cancer case is benign or malignant.</p></li>
+<li><p>Questions: Are there specific features (like radius or texture) that predict whether a tumor is malignant or benign?</p></li>
+<li><p>This matters to me because early prediction of malignancy could help in early diagnosis and treatment planning.</p></li>
+<li><p>Predictions: I predict that larger tumor sizes (measured by radius_mean and area_mean) will strongly correlate with a higher chance of a tumor being malignant.</p></li>
+<li><p>Specifically, I expect that:</p>
+<ul>
+<li><p>Malignant tumors will have at least a 30% higher average radius than benign tumors.</p></li>
+<li><p>There will be a clear separation in the boxplot or density curves.</p></li>
+</ul></li>
+<li><p>Data Source I will be using: <a href="https://www.kaggle.com/datasets/erdemtaha/cancer-data?resource=download" class="uri">https://www.kaggle.com/datasets/erdemtaha/cancer-data?resource=download</a></p></li>
+</ul></li>
+<li><p><strong>Approach</strong></p>
+<ul>
+<li><p>Data set details:</p>
+<ul>
+<li><p>Source: Kaggle – Cancer Data (UCI Machine Learning Repository version)</p></li>
+<li><p>How data was collected: Digitized features of a breast mass from fine needle aspirate (FNA) of breast tissue.</p></li>
+<li><p>Variables include:</p>
+<ul>
+<li><p>‘diagnosis’: malignant (M) or Benign (B)</p></li>
+<li><p>Several numeric variables like ‘radius_mean,’ ‘area_mean,’ ‘texture_mean,’ etc.</p></li>
+</ul></li>
+<li><p>There are 569 rows.</p></li>
+<li><p>There are 33 variables</p></li>
+</ul></li>
+<li><p><strong>Tools</strong></p>
+<ul>
+<li>Tools I am using are R and RStudio in Posit Cloud, GitHub for website hosting, and packages like ‘tidyverse’ and ‘ggplot2.’</li>
+</ul></li>
+<li><p><strong>Approach/Predictions</strong></p>
+<ul>
+<li><p>I will examine how radius_mean and area_mean relate to diagnosis.</p></li>
+<li><p>Specifically:</p>
+<ul>
+<li><p>Do malignant tumors have a higher radius_mean than benign ones?</p></li>
+<li><p>Do area and texture also show visual differences across diagnosis types?</p></li>
+</ul></li>
+<li><p>Predictions (Revisited)</p>
+<ul>
+<li>Malignant tumors will have a median radius at least 2 mm larger than benign ones.</li>
+<li>A boxplot will show a clear separation in radius distributions.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Results:</strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Cancer_Data.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mydata <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">recode</span>(diagnosis,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"B"</span> <span class="ot">=</span> <span class="st">"Benign"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"M"</span> <span class="ot">=</span> <span class="st">"Malignant"</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(<span class="at">x =</span> diagnosis, <span class="at">y =</span> radius_mean, <span class="at">fill =</span> diagnosis, <span class="at">diagnosis =</span> <span class="st">"B"</span> <span class="sc">==</span> <span class="st">"Benign"</span>)) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Tumor Radius by Diagnosis Type"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Diagnosis"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Median Radius (mm)"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="delink listing-description"><a href="./posts/my_first_post/index.html" class="no-external">
-This is an example first post. Whatever you write here will appear inside your post.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/my_first_post/index.html" class="no-external">
-<div class="listing-date">
-Oct 21, 2022
-</div>
-<div class="listing-author">
-Matt Crump
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Z29hbHMlMkNnZW5lcmFs" data-listing-date-sort="1666310400000" data-listing-file-modified-sort="1754490583003" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="96">
-<div class="thumbnail"><a href="./posts/Example_assignment/index.html" class="no-external">
+<ul>
+<li><strong>Figure Caption:</strong></li>
+</ul>
+<p>This figure shows the distribution of tumor radii for benign and malignant diagnoses. Malignant tumors tend to have higher radius measurements.</p>
+<ul>
+<li><strong>Conclusion:</strong></li>
+</ul>
+<p>Malignant tumors tend to have larger radii than benign ones, with minimal overlap in distribution.</p>
+<ul>
+<li><p><strong>Discussion</strong></p>
+<ul>
+<li><p>My hypothesis was supported. I expected malignant tumors to have significantly larger radii, and the data showed exactly that.</p></li>
+<li><p>I now believe more strongly that certain tumor features are reliable predictors of malignancy.</p></li>
+<li><p>I could improve this analysis by:</p>
+<p>- Including a logistic regression model</p>
+<p>- Exploring more features simultaneously</p></li>
+</ul></li>
+</ul>
 
-<p class="card-img-top"><img src="images/logo.png"  class="thumbnail-image card-img"/></p>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Example_assignment/index.html" class="no-external">Example assignment</a>
-</h3>
-<div class="listing-categories">
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Z29hbHM='); return false;">goals</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhbA=='); return false;">general</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Example_assignment/index.html" class="no-external">
-This assignment engages you in the process of introspection. Your task is to use introspection to evaluate and describe your own mental imagery abilities. Attempt to answer…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Example_assignment/index.html" class="no-external">
-<div class="listing-date">
-Oct 21, 2022
-</div>
-<div class="listing-author">
-Matt Crump
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

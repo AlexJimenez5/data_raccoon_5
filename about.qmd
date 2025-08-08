@@ -15,19 +15,6 @@ about:
       href: https://github.com
 ---
 
-The content on this page is from `about.qmd`. Edit that file to change how this page looks.
+**Hi there! My name is Alexandra, and I’m currently entering my second year at Dominican University, where I’m majoring in Nursing. I work as a CNA and am especially interested in pursuing a nursing specialty in oncology, which is why I chose to explore cancer data in this project. I took this data science course to challenge myself and explore the world of R and computer science—and I’ve genuinely enjoyed learning how to analyze and visualize real-world health data.**
 
-"About" pages are special quarto template pages, with multiple options: <https://quarto.org/docs/websites/website-about.html>.
-
-Try changing the template type from `jolla` to one of the other options for a different look and feel.
-
-This is cool\
-
-1.  this is a numbered list
-2.  this is part 2
-
-Google is good.
-
-{r}
-
-2+2
+**Outside of school and work, I find joy in nature and spend as much time outdoors as I can. I also love hanging out with my family, my sweet dog, and my boyfriend of three years. And yes... I *do* have a soft spot for raccoons 🦝.**

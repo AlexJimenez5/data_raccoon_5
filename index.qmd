@@ -2,12 +2,139 @@
 title: "quartoCourseBlog"
 author: "Alexandra Jimenez"
 date: "2025-08-06"
-  image-placeholder: "images/logo.png"
-  categories: "data_science, sample_projects"
+image-placeholder: "images/logo.png"
+categories: "data_science, goals"
 ---
 
-i love music, raccoon's, and flowers
+```{r}
+#| include: false
+library(tidyverse)
+```
 
-Welcome to my website showing off my R portfolio
+**Welcome to my website showing off my R portfolio**
 
 ![](images/clipboard-3366648065.png)
+
+# Benign and Malignant Cancer Data
+
+-   **Introduction**
+
+    -   Cancer is one of the leading causes of death globally. I'm interested in exploring how different variables—such as age, tumor size, or metastasis presence—relate to whether a cancer case is benign or malignant.
+
+    -   Questions: Are there specific features (like radius or texture) that predict whether a tumor is malignant or benign?
+
+    -   This matters to me because early prediction of malignancy could help in early diagnosis and treatment planning.
+
+    -   Predictions: I predict that larger tumor sizes (measured by radius_mean and area_mean) will strongly correlate with a higher chance of a tumor being malignant.
+
+    -   Specifically, I expect that:
+
+        -   Malignant tumors will have at least a 30% higher average radius than benign tumors.
+
+        -   There will be a clear separation in the boxplot or density curves.
+
+    -   Data Source I will be using: <https://www.kaggle.com/datasets/erdemtaha/cancer-data?resource=download>
+
+-   **Approach**
+
+    -   Data set details:
+
+        -   Source: Kaggle – Cancer Data (UCI Machine Learning Repository version)
+
+        -   How data was collected: Digitized features of a breast mass from fine needle aspirate (FNA) of breast tissue.
+
+        -   Variables include:
+
+            -   'diagnosis': malignant (M) or Benign (B)
+
+            -   Several numeric variables like 'radius_mean,' 'area_mean,' 'texture_mean,' etc.
+
+        -   There are 569 rows.
+
+        -   There are 33 variables
+
+    -   **Tools**
+
+        -   Tools I am using are R and RStudio in Posit Cloud, GitHub for website hosting, and packages like 'tidyverse' and 'ggplot2.'
+
+    -   **Approach/Predictions**
+
+        -   I will examine how radius_mean and area_mean relate to diagnosis.
+
+        -   Specifically:
+
+            -   Do malignant tumors have a higher radius_mean than benign ones?
+
+            -   Do area and texture also show visual differences across diagnosis types?
+
+        -   Predictions (Revisited)
+
+            -   Malignant tumors will have a median radius at least 2 mm larger than benign ones.
+            -   A boxplot will show a clear separation in radius distributions.
+
+-   **Results:**
+
+```{r}
+
+mydata <- read.csv("Cancer_Data.csv")
+
+mydata <- mydata %>%
+  mutate(diagnosis = recode(diagnosis,
+                            "B" = "Benign",
+                            "M" = "Malignant"))
+ggplot(mydata, aes(x = diagnosis, y = radius_mean, fill = diagnosis, diagnosis = "B" == "Benign")) +
+  geom_boxplot() +
+  labs(
+    title = "Tumor Radius by Diagnosis Type",
+    x = "Diagnosis",
+    y = "Median Radius (mm)",
+  )
+```
+
+```{r}
+#| eval: false
+#| include: false
+         
+# mydata <- mydata %>%
+#   mutate(diagnosis = recode(diagnosis,
+#                             "B" = "Benign",
+#                             "M" = "Malignant"))
+# ggplot(mydata, aes(x = diagnosis, y = texture_mean, fill = diagnosis)) + geom_boxplot() + 
+#   labs(
+#     title = "Tumor Texture by Diagnosis Type",
+#     x = "Diagnosis",
+#     y = "Mean Texture (mm)"
+#   )
+# 
+# mydata <- mydata %>%
+#   mutate(diagnosis = recode(diagnosis,
+#                             "B" = "Benign",
+#                             "M" = "Malignant"))
+# ggplot(mydata, aes(x = diagnosis, y = area_mean, fill = diagnosis)) + 
+#   geom_boxplot() + 
+#   labs(
+#     title = "Tumor Area by Diagnosis Type",
+#     x = "Diagnosis",
+#     y = "Mean Area (mm)"
+#   )
+```
+
+-   **Figure Caption:**
+
+This figure shows the distribution of tumor radii for benign and malignant diagnoses. Malignant tumors tend to have higher radius measurements.
+
+-   **Conclusion:**
+
+Malignant tumors tend to have larger radii than benign ones, with minimal overlap in distribution.
+
+-   **Discussion**
+
+    -   My hypothesis was supported. I expected malignant tumors to have significantly larger radii, and the data showed exactly that.
+
+    -   I now believe more strongly that certain tumor features are reliable predictors of malignancy.
+
+    -   I could improve this analysis by:
+
+        \- Including a logistic regression model
+
+        \- Exploring more features simultaneously
