@@ -9,3 +9,5 @@ date: "2025-08-06"
 i love music, raccoon's, and flowers
 
 Welcome to my website showing off my R portfolio
+
+![](images/clipboard-3366648065.png)
